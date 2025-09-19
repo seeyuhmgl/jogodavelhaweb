@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'Zrnic';
+  src: url('./assets/fonts/zrnic rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+:root{
+  --square-size: 88px;
+  --line-thin: 1px; 
+  --line-thick: 4px; 
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #fff;
+  background-image: url('/ps2-rsod.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.game-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  width:100%;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, var(--square-size));
+  grid-template-rows: repeat(3, var(--square-size));
+  gap: 0;
+  width: calc(var(--square-size) * 3);
+  height: calc(var(--square-size) * 3);
+  margin: 8px auto 0;
+  border: var(--line-thick) solid #bb22bb; 
+  background: transparent;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.square {
+  width: var(--square-size);
+  height: var(--square-size);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  box-sizing: border-box;
+  border-right: var(--line-thick) solid #fff; 
+  border-bottom: var(--line-thick) solid #fff;
+  border-radius: 0;
+  transition: background-color 0.2s ease;
+}
+
+.square:hover:not(:disabled) {
+  background: rgba(255,255,255,0.05);
+}
+
+.square:nth-child(3),
+.square:nth-child(6),
+.square:nth-child(9) {
+  border-right: none !important;
+}
+
+.square:nth-child(7),
+.square:nth-child(8),
+.square:nth-child(9) {
+  border-bottom: none !important;
+}
+
+.square .bi {
+  font-size: 44px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.bi-x-lg {
+  color: #b5c7ff;
+}
+
+.bi-circle {
+  color: #ff6b6b;
+}
+
+.controls {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.status-pill {
+  font-size: 2.2rem;
+  font-family: 'Zrnic', Arial, sans-serif;
+  font-weight: bold;
+  color: #000000;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 32px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 8px #000;
+  text-align: center;
+}
+
+.history-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap; 
+  justify-content: center;
+}
+
+.history-list button{
+  white-space:nowrap;
+}
+
+.restart-btn {
+  font-family: 'Zrnic';
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width:480px){
+  :root{
+    --square-size:64px;
+    --line-thin: 1px;
+    --line-thick: 3px;
+  }
+  .board {
+    width: calc(var(--square-size) * 3);
+    height: calc(var(--square-size) * 3);
+  }
+}
